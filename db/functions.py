@@ -14,10 +14,10 @@ def connectDB(password=None):
     import sqlalchemy
     from sqlalchemy import create_engine
     #connect to postgresql database
-    db_user = ''
+    db_user = 'genomicdatabase'
     db_password = password
-    db_name = ''
-    db_host = ''
+    db_name = 'genomedb'
+    db_host = 'localhost'
     db_port =  3306
     db_url = 'mariadb+pymysql://{}:{}@{}:{}/{}?use_unicode=1&charset=utf8'.format(db_user,db_password,db_host,db_port,db_name)
     engine = create_engine(db_url,encoding='utf-8')
