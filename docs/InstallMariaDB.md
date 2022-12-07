@@ -1,24 +1,11 @@
-Install MariaDB
+# Installing MariaDB
 
-sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/10.3/ubuntu bionic main'
+I ([@SantosRAC](https://github.com/SantosRAC)) tested on Ubuntu 22.04.1 LTS.
+
+```bash
 sudo apt update
 sudo apt install mariadb-server
 sudo systemctl status mariadb
+```
 
-
-If everything goes well, mariadb should be running.
-Now let's move the datadir to a particion with more space
-
-sudo systemctl stop mariadb
-
-sudo rsync -av /var/lib/mysql /data/
-sudo mv /var/lib/mysql/ /var/lib/mysql.bak
-
-Edit the file /etc/mysql/my.cnf, setting datadir and tmpdir to:
-datadir         = /data/mysql
-tmpdir          = /data/tmp
-Comment the bind_address line to be able to connect from the internet.
-
-sudo mysql_secure_installation
-The password for the root user in Diego's bitwarden.
+**The original repository describes how to move the database to a storage devide with more space than the default one.**
